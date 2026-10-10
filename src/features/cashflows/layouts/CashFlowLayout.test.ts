@@ -31,15 +31,15 @@ const profile = {
 const routes = [
   { path: "/", component: { render: () => h("p", "Konten dashboard") } },
   { path: "/users", component: { render: () => h("p", "Konten pengguna") } },
-  { path: "/login", component: { render: () => h("p", "Halaman login") } },
+  { path: "/auth/login", component: { render: () => h("p", "Halaman login") } },
 ];
 
 describe("CashFlowLayout", () => {
-  it("mengalihkan ke /login jika belum login", async () => {
+  it("mengalihkan ke /auth/login jika belum login", async () => {
     const { router } = await renderWithProviders(CashFlowLayout, { routes });
     await flushPromises();
 
-    expect(router.currentRoute.value.path).toBe("/login");
+    expect(router.currentRoute.value.path).toBe("/auth/login");
     expect(userApi.getMe).not.toHaveBeenCalled();
   });
 
@@ -88,7 +88,7 @@ describe("CashFlowLayout", () => {
     await flushPromises();
 
     expect(useAuthStore().token).toBeNull();
-    expect(router.currentRoute.value.path).toBe("/login");
+    expect(router.currentRoute.value.path).toBe("/auth/login");
   });
 
   it("tetap di halaman ketika profil gagal dimuat tetapi token masih ada", async () => {

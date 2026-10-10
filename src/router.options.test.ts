@@ -20,7 +20,7 @@ describe("router.options", () => {
     const authLayout = routes.find((route) => route.path === "/auth")!;
     const dashboardLayout = routes.find((route) => route.path === "/")!;
 
-    expect(authLayout.children?.map((route) => route.path)).toEqual(["/login", "/register"]);
+    expect(authLayout.children?.map((route) => route.path)).toEqual(["/auth/login", "/auth/register"]);
     expect(flatten(dashboardLayout.children ?? [], "/")).toEqual([
       "/",
       "/cash-flows/:cashFlowId",

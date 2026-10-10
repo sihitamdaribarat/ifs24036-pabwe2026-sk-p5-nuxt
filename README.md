@@ -16,15 +16,15 @@ bun run test:coverage     # pengujian Vitest dengan threshold coverage 100%
 
 | Jenis | Path | Halaman |
 | --- | --- | --- |
-| Publik | `/login` | `LoginPage.vue` (input `#login-email-input`, `#login-password-input`, tombol `#login-submit-button`) |
-| Publik | `/register` | `RegisterPage.vue` |
+| Publik | `/auth/login` (alias `/login`) | `LoginPage.vue` (input `#login-email-input`, `#login-password-input`, tombol `#login-submit-button`) |
+| Publik | `/auth/register` (alias `/register`) | `RegisterPage.vue` |
 | Terproteksi | `/` | `HomePage.vue` — dashboard arus kas |
 | Terproteksi | `/cash-flows/:cashFlowId` | `DetailPage.vue` |
 | Terproteksi | `/users` | `UsersPage.vue` |
 | Terproteksi | `/profile` | `ProfilePage.vue` |
 | Wildcard | `/:pathMatch(.*)*` | `NotFoundPage.vue` |
 
-`/auth`, `/auth/login`, dan `/auth/register` dialihkan ke halaman publik. Rute didefinisikan di `src/routes.ts` dan dipasang melalui `src/router.options.ts`. Halaman terproteksi dibungkus `CashFlowLayout.vue`, yang mengalihkan ke `/login` bila belum ada token.
+`/auth/login` dan `/auth/register` terbuka langsung tanpa redirect; `/login` dan `/register` adalah alias, sedangkan `/auth` dialihkan ke `/auth/login`. Rute didefinisikan di `src/routes.ts` dan dipasang melalui `src/router.options.ts`. Halaman terproteksi dibungkus `CashFlowLayout.vue`, yang mengalihkan ke `/auth/login` bila belum ada token.
 
 ## Struktur
 

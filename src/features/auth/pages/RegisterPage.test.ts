@@ -28,7 +28,7 @@ describe("RegisterPage", () => {
     vi.mocked(authApi.register).mockResolvedValue("Berhasil melakukan pendaftaran");
     const { wrapper, router } = await renderWithProviders(RegisterPage, { route: "/register" });
 
-    expect(wrapper.find('a[href="/login"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="/auth/login"]').exists()).toBe(true);
     await fillForm(wrapper);
 
     expect(authApi.register).toHaveBeenCalledWith({
@@ -37,7 +37,7 @@ describe("RegisterPage", () => {
       password: "123456",
     });
     expect(showSuccessDialog).toHaveBeenCalled();
-    expect(router.currentRoute.value.path).toBe("/login");
+    expect(router.currentRoute.value.path).toBe("/auth/login");
   });
 
   it("registrasi gagal menampilkan dialog error", async () => {

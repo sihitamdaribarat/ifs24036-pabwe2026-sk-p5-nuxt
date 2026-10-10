@@ -20,7 +20,7 @@ async function onSubmit(): Promise<void> {
   });
   if (success) {
     await showSuccessDialog("Akun berhasil dibuat. Silakan masuk.", "Pendaftaran berhasil");
-    await router.push("/login");
+    await router.push("/auth/login");
   } else {
     await showErrorDialog(authStore.error as string, "Pendaftaran gagal");
   }
@@ -95,7 +95,7 @@ async function onSubmit(): Promise<void> {
 
     <p class="mt-6 text-center text-sm text-slate-500">
       Sudah punya akun?
-      <RouterLink to="/login" class="font-semibold text-indigo-600 hover:text-indigo-700">
+      <RouterLink to="/auth/login" class="font-semibold text-indigo-600 hover:text-indigo-700">
         Masuk di sini
       </RouterLink>
     </p>

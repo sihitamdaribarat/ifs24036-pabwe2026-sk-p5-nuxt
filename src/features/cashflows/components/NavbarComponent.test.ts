@@ -78,6 +78,6 @@ describe("NavbarComponent", () => {
     expect(authApi.logout).toHaveBeenCalled();
     expect(getAccessToken()).toBeNull();
     expect(useUsersStore().profile).toBeNull();
-    expect(router.currentRoute.value.path).toBe("/login");
+    expect(router.currentRoute.value.path).toBe("/auth/login");
   });
 });

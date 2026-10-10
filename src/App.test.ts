@@ -74,15 +74,25 @@ describe("App", () => {
     expect(wrapper.text()).toContain("Buat akun baru");
   });
 
-  it("mengarahkan /auth, /auth/login, dan /auth/register ke halaman publik", async () => {
-    expect((await visit("/auth")).router.currentRoute.value.path).toBe("/login");
-    expect((await visit("/auth/login")).router.currentRoute.value.path).toBe("/login");
-    expect((await visit("/auth/register")).router.currentRoute.value.path).toBe("/register");
+  it("membuka /auth/login dan /auth/register tanpa redirect", async () => {
+    const login = await visit("/auth/login");
+    expect(login.router.currentRoute.value.path).toBe("/auth/login");
+    expect(login.router.currentRoute.value.redirectedFrom).toBeUndefined();
+    expect(login.wrapper.find("#login-email-input").exists()).toBe(true);
+
+    const register = await visit("/auth/register");
+    expect(register.router.currentRoute.value.path).toBe("/auth/register");
+    expect(register.router.currentRoute.value.redirectedFrom).toBeUndefined();
+    expect(register.wrapper.text()).toContain("Buat akun baru");
+  });
+
+  it("mengarahkan /auth ke /auth/login", async () => {
+    expect((await visit("/auth")).router.currentRoute.value.path).toBe("/auth/login");
   });
 
   it("melindungi halaman dashboard dari pengguna yang belum login", async () => {
     const { wrapper, router } = await visit("/");
-    expect(router.currentRoute.value.path).toBe("/login");
+    expect(router.currentRoute.value.path).toBe("/auth/login");
     expect(wrapper.find("#login-email-input").exists()).toBe(true);
   });
 

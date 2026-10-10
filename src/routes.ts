@@ -3,26 +3,27 @@ import AuthLayout from "~/features/auth/layouts/AuthLayout.vue";
 import CashFlowLayout from "~/features/cashflows/layouts/CashFlowLayout.vue";
 
 export const routes: RouteRecordRaw[] = [
-  // Halaman publik: /login dan /register dibungkus AuthLayout.
+  // Halaman publik: /auth/login dan /auth/register dibungkus AuthLayout.
+  // /login dan /register adalah alias sehingga keduanya terbuka tanpa redirect.
   {
     path: "/auth",
     component: AuthLayout,
-    redirect: "/login",
+    redirect: "/auth/login",
     children: [
       {
-        path: "/login",
+        path: "/auth/login",
+        alias: "/login",
         name: "login",
         component: () => import("~/features/auth/pages/LoginPage.vue"),
       },
       {
-        path: "/register",
+        path: "/auth/register",
+        alias: "/register",
         name: "register",
         component: () => import("~/features/auth/pages/RegisterPage.vue"),
       },
     ],
   },
-  { path: "/auth/login", redirect: "/login" },
-  { path: "/auth/register", redirect: "/register" },
 
   // Halaman terproteksi: dibungkus CashFlowLayout yang memeriksa sesi login.
   {

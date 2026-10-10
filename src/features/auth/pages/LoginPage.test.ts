@@ -25,7 +25,7 @@ describe("LoginPage", () => {
     expect(wrapper.find("#login-email-input").exists()).toBe(true);
     expect(wrapper.find("#login-password-input").attributes("type")).toBe("password");
     expect(wrapper.find("#login-submit-button").text()).toContain("Masuk");
-    expect(wrapper.find('a[href="/register"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="/auth/register"]').exists()).toBe(true);
   });
 
   it("login berhasil menyimpan token dan menuju dashboard", async () => {

@@ -23,14 +23,14 @@ watch(
 
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
-    await router.replace("/login");
+    await router.replace("/auth/login");
     return;
   }
   const loaded = await usersStore.fetchProfile();
   // Token kedaluwarsa: apiHelper menghapus token ketika server membalas 401.
   if (!loaded && !getAccessToken()) {
     authStore.clearSession();
-    await router.replace("/login");
+    await router.replace("/auth/login");
   }
 });
 </script>

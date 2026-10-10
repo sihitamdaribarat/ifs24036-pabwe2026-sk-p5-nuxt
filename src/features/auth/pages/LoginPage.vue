@@ -74,7 +74,7 @@ async function onSubmit(): Promise<void> {
 
     <p class="mt-6 text-center text-sm text-slate-500">
       Belum punya akun?
-      <RouterLink to="/register" class="font-semibold text-indigo-600 hover:text-indigo-700">
+      <RouterLink to="/auth/register" class="font-semibold text-indigo-600 hover:text-indigo-700">
         Daftar sekarang
       </RouterLink>
     </p>

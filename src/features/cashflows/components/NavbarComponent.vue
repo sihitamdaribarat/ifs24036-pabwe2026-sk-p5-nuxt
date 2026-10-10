@@ -25,7 +25,7 @@ async function onLogout(): Promise<void> {
   if (!confirmed) return;
   await authStore.logout();
   usersStore.reset();
-  await router.push("/login");
+  await router.push("/auth/login");
 }
 </script>
 
