@@ -38,7 +38,6 @@ export default defineConfig(({ mode }) => {
         include: ["src/**/*.{js,ts,vue}"],
         exclude: [
           "src/main.ts",
-          "src/router.options.ts",
           "src/setupTests.ts",
           "src/test-utils.ts",
           "src/**/*.d.ts",
