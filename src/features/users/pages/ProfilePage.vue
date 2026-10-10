@@ -32,17 +32,19 @@ watch(
   { immediate: true },
 );
 
-async function notify(success: boolean): Promise<void> {
+async function runAndNotify(action: () => Promise<boolean>): Promise<boolean> {
+  const success = await action();
   if (success) {
     await showSuccessDialog(usersStore.message as string);
   } else {
     await showErrorDialog(usersStore.error as string);
   }
+  return success;
 }
 
 async function onUpdateProfile(): Promise<void> {
-  await notify(
-    await usersStore.updateProfile({
+  await runAndNotify(() =>
+    usersStore.updateProfile({
       name: profileForm.name.trim(),
       email: profileForm.email.trim(),
     }),
@@ -54,18 +56,17 @@ async function onChangePassword(): Promise<void> {
     await showErrorDialog("Konfirmasi password baru tidak sama.");
     return;
   }
-  const success = await usersStore.changePassword({ ...passwordForm });
+  const success = await runAndNotify(() => usersStore.changePassword({ ...passwordForm }));
   if (success) {
     Object.assign(passwordForm, { password: "", new_password: "", new_password_confirmation: "" });
   }
-  await notify(success);
 }
 
 async function onPhotoChange(event: Event): Promise<void> {
   const input = event.target as HTMLInputElement;
   const file = input.files?.[0];
   if (!file) return;
-  await notify(await usersStore.updatePhoto(file));
+  await runAndNotify(() => usersStore.updatePhoto(file));
   input.value = "";
 }
 

@@ -45,7 +45,8 @@ export function buildUrl(path: string, query: Record<string, QueryValue> = {}): 
     }
   }
   const search = params.toString();
-  return `${DELCOM_BASEURL}${path}${search ? `?${search}` : ""}`;
+  const queryString = search ? "?" + search : "";
+  return `${DELCOM_BASEURL}${path}${queryString}`;
 }
 
 /** Menggabungkan pesan validasi `{ field: ["pesan"] }` dari API menjadi satu kalimat. */
