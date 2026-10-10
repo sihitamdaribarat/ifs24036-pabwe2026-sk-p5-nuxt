@@ -48,7 +48,7 @@ async function onLogout(): Promise<void> {
     <div class="flex items-center gap-3">
       <div class="hidden text-right sm:block">
         <p class="text-sm font-semibold text-slate-900" data-testid="navbar-name">{{ displayName }}</p>
-        <p class="text-xs text-slate-500" data-testid="navbar-username">{{ username }}</p>
+        <p class="text-xs text-slate-600" data-testid="navbar-username">{{ username }}</p>
       </div>
       <div class="relative">
         <img

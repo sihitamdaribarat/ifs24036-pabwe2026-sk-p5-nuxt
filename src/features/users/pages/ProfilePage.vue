@@ -78,7 +78,7 @@ onMounted(() => usersStore.fetchProfile());
     <div>
       <p class="text-sm font-semibold text-indigo-600">Akun</p>
       <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Profil Saya</h1>
-      <p class="mt-1 text-sm text-slate-500">Kelola informasi akun, foto profil, dan kata sandi kamu.</p>
+      <p class="mt-1 text-sm text-slate-600">Kelola informasi akun, foto profil, dan kata sandi kamu.</p>
     </div>
 
     <div class="grid gap-6 lg:grid-cols-3">
@@ -113,7 +113,7 @@ onMounted(() => usersStore.fetchProfile());
           />
         </div>
         <p class="mt-5 text-lg font-bold text-slate-900">{{ usersStore.profile?.name ?? "-" }}</p>
-        <p class="text-sm text-slate-500">{{ usersStore.profile?.email ?? "-" }}</p>
+        <p class="text-sm text-slate-600">{{ usersStore.profile?.email ?? "-" }}</p>
         <p v-if="usersStore.profile" class="mt-3 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
           Bergabung {{ formatDate(usersStore.profile.created_at) }}
         </p>

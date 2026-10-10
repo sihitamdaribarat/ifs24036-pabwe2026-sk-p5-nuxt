@@ -1,6 +1,9 @@
 import { defineNuxtConfig } from "nuxt/config";
 import tailwindcss from "@tailwindcss/vite";
 
+const FONT_URL =
+  "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap";
+
 const customPort = Number(process.env.APP_PORT || process.env.PORT) || 3000;
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -31,20 +34,16 @@ export default defineNuxtConfig({
     },
     build: {
       chunkSizeWarningLimit: 1500,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              return "vendor";
-            }
-          },
-        },
-      },
     },
   },
 
   devServer: {
     port: customPort,
+  },
+
+  nitro: {
+    // Sajikan aset statis dalam bentuk gzip/brotli (Lighthouse: "Enable text compression").
+    compressPublicAssets: { gzip: true, brotli: true },
   },
 
   hooks: {
@@ -66,6 +65,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Delcom Cash Flow",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Delcom Cash Flow: catat pemasukan dan pengeluaran, pantau saldo, dan lihat statistik arus kas harian maupun bulanan.",
+        },
+      ],
       htmlAttrs: {
         lang: "id",
       },
@@ -77,11 +83,15 @@ export default defineNuxtConfig({
           href: "https://fonts.gstatic.com",
           crossorigin: "",
         },
+        // Font dimuat tanpa memblokir render: media "print" lalu diaktifkan setelah selesai dimuat.
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap",
+          href: FONT_URL,
+          media: "print",
+          onload: "this.media='all'",
         },
       ],
+      noscript: [{ innerHTML: `<link rel="stylesheet" href="${FONT_URL}">` }],
       bodyAttrs: {
         class: "bg-slate-50 text-slate-900 font-sans antialiased min-h-screen",
       },

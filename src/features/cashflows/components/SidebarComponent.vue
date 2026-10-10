@@ -35,13 +35,13 @@ const menus = [
           </span>
           <span>
             <span class="block text-base leading-tight font-extrabold tracking-tight">Delcom</span>
-            <span class="block text-xs font-medium text-slate-500">Cash Flow Manager</span>
+            <span class="block text-xs font-medium text-slate-600">Cash Flow Manager</span>
           </span>
         </RouterLink>
         <button
           type="button"
           data-testid="sidebar-close"
-          class="rounded-xl p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+          class="rounded-xl p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
           aria-label="Tutup menu navigasi"
           @click="$emit('close')"
         >
@@ -50,7 +50,7 @@ const menus = [
       </div>
 
       <nav class="flex-1 space-y-1 px-4 py-6">
-        <p class="px-3 pb-2 text-xs font-semibold tracking-wider text-slate-400 uppercase">Menu</p>
+        <p class="px-3 pb-2 text-xs font-semibold tracking-wider text-slate-600 uppercase">Menu</p>
         <RouterLink
           v-for="menu in menus"
           :key="menu.to"

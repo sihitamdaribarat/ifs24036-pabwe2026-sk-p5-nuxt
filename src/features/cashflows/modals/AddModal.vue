@@ -58,12 +58,12 @@ async function onSubmit(): Promise<void> {
       <div class="flex items-start justify-between border-b border-slate-100 p-6">
         <div>
           <h3 id="add-modal-title" class="text-lg font-bold text-slate-900">Catat Arus Kas Baru</h3>
-          <p class="text-sm text-slate-500">Tambahkan pemasukan atau pengeluaran.</p>
+          <p class="text-sm text-slate-600">Tambahkan pemasukan atau pengeluaran.</p>
         </div>
         <button
           type="button"
           data-testid="add-modal-close"
-          class="rounded-xl p-2 text-slate-400 hover:bg-slate-100"
+          class="rounded-xl p-2 text-slate-600 hover:bg-slate-100"
           aria-label="Tutup"
           @click="onClose"
         >
@@ -135,7 +135,7 @@ async function onSubmit(): Promise<void> {
             class="form-input"
             required
           />
-          <p class="mt-1 text-xs text-slate-500">{{ formatRupiah(Number(form.nominal) || 0) }}</p>
+          <p class="mt-1 text-xs text-slate-600">{{ formatRupiah(Number(form.nominal) || 0) }}</p>
         </div>
 
         <div>

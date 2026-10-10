@@ -45,18 +45,18 @@ onMounted(loadDetail);
 
 <template>
   <div class="mx-auto max-w-3xl space-y-6">
-    <RouterLink to="/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600">
+    <RouterLink to="/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600">
       <ArrowLeft class="h-4 w-4" />
       Kembali ke dashboard
     </RouterLink>
 
-    <p v-if="cashFlowsStore.isDetailLoading" class="card p-10 text-center text-sm text-slate-500">
+    <p v-if="cashFlowsStore.isDetailLoading" class="card p-10 text-center text-sm text-slate-600">
       Memuat detail transaksi...
     </p>
 
     <div v-else-if="!cashFlowsStore.cashFlow" class="card p-10 text-center" data-testid="detail-error">
       <p class="font-semibold text-slate-800">Transaksi tidak ditemukan</p>
-      <p class="mt-1 text-sm text-slate-500">{{ cashFlowsStore.error }}</p>
+      <p class="mt-1 text-sm text-slate-600">{{ cashFlowsStore.error }}</p>
     </div>
 
     <article v-else class="card overflow-hidden" data-testid="detail-card">
@@ -76,36 +76,36 @@ onMounted(loadDetail);
       </div>
 
       <dl class="grid gap-6 p-6 sm:grid-cols-2 sm:p-8">
-        <div class="flex gap-3">
-          <Tag class="mt-0.5 h-5 w-5 text-indigo-500" />
-          <div>
-            <dt class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Label kategori</dt>
-            <dd class="font-semibold text-slate-900">{{ cashFlowsStore.cashFlow.label }}</dd>
-          </div>
+        <div class="relative pl-8">
+          <dt class="text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            <Tag class="absolute top-0.5 left-0 h-5 w-5 text-indigo-500" aria-hidden="true" />
+            Label kategori
+          </dt>
+          <dd class="font-semibold text-slate-900">{{ cashFlowsStore.cashFlow.label }}</dd>
         </div>
-        <div class="flex gap-3">
-          <Wallet class="mt-0.5 h-5 w-5 text-indigo-500" />
-          <div>
-            <dt class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Sumber dana</dt>
-            <dd class="font-semibold text-slate-900">{{ SOURCE_LABELS[cashFlowsStore.cashFlow.source] }}</dd>
-          </div>
+        <div class="relative pl-8">
+          <dt class="text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            <Wallet class="absolute top-0.5 left-0 h-5 w-5 text-indigo-500" aria-hidden="true" />
+            Sumber dana
+          </dt>
+          <dd class="font-semibold text-slate-900">{{ SOURCE_LABELS[cashFlowsStore.cashFlow.source] }}</dd>
         </div>
-        <div class="flex gap-3">
-          <Calendar class="mt-0.5 h-5 w-5 text-indigo-500" />
-          <div>
-            <dt class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Dibuat</dt>
-            <dd class="font-semibold text-slate-900">{{ formatDateTime(cashFlowsStore.cashFlow.created_at) }}</dd>
-          </div>
+        <div class="relative pl-8">
+          <dt class="text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            <Calendar class="absolute top-0.5 left-0 h-5 w-5 text-indigo-500" aria-hidden="true" />
+            Dibuat
+          </dt>
+          <dd class="font-semibold text-slate-900">{{ formatDateTime(cashFlowsStore.cashFlow.created_at) }}</dd>
         </div>
-        <div class="flex gap-3">
-          <Clock class="mt-0.5 h-5 w-5 text-indigo-500" />
-          <div>
-            <dt class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Diperbarui</dt>
-            <dd class="font-semibold text-slate-900">{{ formatDateTime(cashFlowsStore.cashFlow.updated_at) }}</dd>
-          </div>
+        <div class="relative pl-8">
+          <dt class="text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            <Clock class="absolute top-0.5 left-0 h-5 w-5 text-indigo-500" aria-hidden="true" />
+            Diperbarui
+          </dt>
+          <dd class="font-semibold text-slate-900">{{ formatDateTime(cashFlowsStore.cashFlow.updated_at) }}</dd>
         </div>
         <div class="sm:col-span-2">
-          <dt class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Deskripsi</dt>
+          <dt class="text-xs font-semibold tracking-wider text-slate-600 uppercase">Deskripsi</dt>
           <dd class="mt-1 rounded-xl bg-slate-50 p-4 text-sm whitespace-pre-line text-slate-700">
             {{ cashFlowsStore.cashFlow.description }}
           </dd>

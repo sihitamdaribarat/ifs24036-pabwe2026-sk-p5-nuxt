@@ -68,7 +68,7 @@ const metrics = computed(() => [
     value: cashFlowsStore.stats.totalInflow,
     icon: ArrowDownLeft,
     tone: "bg-white",
-    iconTone: "bg-emerald-50 text-emerald-600",
+    iconTone: "bg-emerald-50 text-emerald-700",
   },
   {
     key: "outflow",
@@ -76,7 +76,7 @@ const metrics = computed(() => [
     value: cashFlowsStore.stats.totalOutflow,
     icon: ArrowUpRight,
     tone: "bg-white",
-    iconTone: "bg-rose-50 text-rose-600",
+    iconTone: "bg-rose-50 text-rose-700",
   },
   {
     key: "cash",
@@ -84,7 +84,7 @@ const metrics = computed(() => [
     value: cashFlowsStore.stats.cash,
     icon: Banknote,
     tone: "bg-white",
-    iconTone: "bg-amber-50 text-amber-600",
+    iconTone: "bg-amber-50 text-amber-700",
   },
   {
     key: "savings",
@@ -190,7 +190,7 @@ onMounted(loadDashboard);
         <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           Ringkasan Arus Kas
         </h1>
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-600">
           Pantau pemasukan, pengeluaran, dan saldo setiap sumber dana kamu.
         </p>
       </div>
@@ -198,7 +198,7 @@ onMounted(loadDashboard);
         <button
           type="button"
           data-testid="reset-all-button"
-          class="btn btn-secondary text-rose-600"
+          class="btn btn-secondary text-rose-700"
           :disabled="cashFlowsStore.isCashFlowDeleteAll || cashFlowsStore.cashFlows.length === 0"
           @click="onDeleteAll"
         >
@@ -228,7 +228,7 @@ onMounted(loadDashboard);
           <component :is="metric.icon" class="h-6 w-6" />
         </span>
         <div class="min-w-0">
-          <p class="text-sm font-medium opacity-75">{{ metric.label }}</p>
+          <p class="text-sm font-medium">{{ metric.label }}</p>
           <p class="truncate text-xl font-extrabold tracking-tight">{{ formatRupiah(metric.value) }}</p>
         </div>
       </article>
@@ -244,7 +244,7 @@ onMounted(loadDashboard);
           <button
             type="button"
             data-testid="period-daily"
-            :class="['rounded-lg px-3 py-1.5', period === 'daily' ? 'bg-white shadow-sm' : 'text-slate-500']"
+            :class="['rounded-lg px-3 py-1.5', period === 'daily' ? 'bg-white shadow-sm' : 'text-slate-600']"
             @click="period = 'daily'"
           >
             Harian
@@ -252,7 +252,7 @@ onMounted(loadDashboard);
           <button
             type="button"
             data-testid="period-monthly"
-            :class="['rounded-lg px-3 py-1.5', period === 'monthly' ? 'bg-white shadow-sm' : 'text-slate-500']"
+            :class="['rounded-lg px-3 py-1.5', period === 'monthly' ? 'bg-white shadow-sm' : 'text-slate-600']"
             @click="period = 'monthly'"
           >
             Bulanan
@@ -260,7 +260,7 @@ onMounted(loadDashboard);
         </div>
       </div>
 
-      <p v-if="trend.length === 0" class="py-8 text-center text-sm text-slate-500">
+      <p v-if="trend.length === 0" class="py-8 text-center text-sm text-slate-600">
         Statistik belum tersedia.
       </p>
       <div v-else class="flex h-44 items-end gap-2 overflow-x-auto pb-1" data-testid="trend-chart">
@@ -274,10 +274,10 @@ onMounted(loadDashboard);
             <span class="w-3 rounded-t bg-emerald-500" :style="{ height: item.inflowHeight }" />
             <span class="w-3 rounded-t bg-rose-500" :style="{ height: item.outflowHeight }" />
           </div>
-          <span class="text-[10px] font-medium whitespace-nowrap text-slate-500">{{ item.key }}</span>
+          <span class="text-[10px] font-medium whitespace-nowrap text-slate-600">{{ item.key }}</span>
         </div>
       </div>
-      <div class="mt-3 flex gap-4 text-xs text-slate-500">
+      <div class="mt-3 flex gap-4 text-xs text-slate-600">
         <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Pemasukan</span>
         <span class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-rose-500" /> Pengeluaran</span>
       </div>
@@ -350,18 +350,18 @@ onMounted(loadDashboard);
       <div v-if="loadError" class="m-5 rounded-xl bg-rose-50 p-4 text-sm text-rose-700" data-testid="load-error">
         {{ loadError }}
       </div>
-      <p v-else-if="cashFlowsStore.isLoading && cashFlowsStore.cashFlows.length === 0" class="p-10 text-center text-sm text-slate-500">
+      <p v-else-if="cashFlowsStore.isLoading && cashFlowsStore.cashFlows.length === 0" class="p-10 text-center text-sm text-slate-600">
         Memuat data transaksi...
       </p>
       <div v-else-if="cashFlowsStore.cashFlows.length === 0" class="flex flex-col items-center gap-2 p-10 text-center" data-testid="empty-state">
         <Inbox class="h-10 w-10 text-slate-300" />
         <p class="font-semibold text-slate-700">Belum ada transaksi</p>
-        <p class="text-sm text-slate-500">Catat transaksi pertamamu dengan tombol "Tambah transaksi".</p>
+        <p class="text-sm text-slate-600">Catat transaksi pertamamu dengan tombol "Tambah transaksi".</p>
       </div>
       <template v-else>
         <div class="hidden overflow-x-auto md:block">
           <table class="w-full text-left text-sm">
-            <thead class="bg-slate-50 text-xs tracking-wider text-slate-500 uppercase">
+            <thead class="bg-slate-50 text-xs tracking-wider text-slate-600 uppercase">
               <tr>
                 <th class="px-5 py-3 font-semibold">Tanggal</th>
                 <th class="px-5 py-3 font-semibold">Label</th>
@@ -373,10 +373,10 @@ onMounted(loadDashboard);
             </thead>
             <tbody class="divide-y divide-slate-100">
               <tr v-for="item in cashFlowsStore.cashFlows" :key="item.id" data-testid="cash-flow-row" class="hover:bg-slate-50/60">
-                <td class="px-5 py-3 whitespace-nowrap text-slate-500">{{ formatDate(item.created_at) }}</td>
+                <td class="px-5 py-3 whitespace-nowrap text-slate-600">{{ formatDate(item.created_at) }}</td>
                 <td class="px-5 py-3">
                   <p class="font-semibold text-slate-900">{{ item.label }}</p>
-                  <p class="max-w-xs truncate text-xs text-slate-500">{{ item.description }}</p>
+                  <p class="max-w-xs truncate text-xs text-slate-600">{{ item.description }}</p>
                 </td>
                 <td class="px-5 py-3">
                   <span
@@ -392,7 +392,7 @@ onMounted(loadDashboard);
                 </td>
                 <td class="px-5 py-3 text-slate-600">{{ SOURCE_LABELS[item.source] }}</td>
                 <td
-                  :class="['px-5 py-3 text-right font-bold whitespace-nowrap', item.type === 'inflow' ? 'text-emerald-600' : 'text-rose-600']"
+                  :class="['px-5 py-3 text-right font-bold whitespace-nowrap', item.type === 'inflow' ? 'text-emerald-700' : 'text-rose-700']"
                 >
                   {{ item.type === "inflow" ? "+" : "-" }}{{ formatRupiah(item.nominal) }}
                 </td>
@@ -400,7 +400,7 @@ onMounted(loadDashboard);
                   <div class="flex justify-end gap-1">
                     <RouterLink
                       :to="`/cash-flows/${item.id}`"
-                      class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-indigo-600"
+                      class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 hover:text-indigo-600"
                       title="Lihat detail"
                     >
                       <Eye class="h-4 w-4" />
@@ -408,7 +408,7 @@ onMounted(loadDashboard);
                     <button
                       type="button"
                       data-testid="row-edit"
-                      class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-amber-600"
+                      class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 hover:text-amber-600"
                       title="Ubah"
                       @click="selectedCashFlow = item"
                     >
@@ -417,7 +417,7 @@ onMounted(loadDashboard);
                     <button
                       type="button"
                       data-testid="row-delete"
-                      class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600"
+                      class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 hover:text-rose-600"
                       title="Hapus"
                       @click="onDelete(item)"
                     >
@@ -435,7 +435,7 @@ onMounted(loadDashboard);
             <div class="flex items-start justify-between gap-3">
               <div class="min-w-0">
                 <p class="font-semibold text-slate-900">{{ item.label }}</p>
-                <p class="text-xs text-slate-500">{{ formatDate(item.created_at) }} · {{ SOURCE_LABELS[item.source] }}</p>
+                <p class="text-xs text-slate-600">{{ formatDate(item.created_at) }} · {{ SOURCE_LABELS[item.source] }}</p>
               </div>
               <span
                 :class="[
@@ -448,7 +448,7 @@ onMounted(loadDashboard);
                 {{ item.type === "inflow" ? "Pemasukan" : "Pengeluaran" }}
               </span>
             </div>
-            <p :class="['mt-2 text-lg font-extrabold', item.type === 'inflow' ? 'text-emerald-600' : 'text-rose-600']">
+            <p :class="['mt-2 text-lg font-extrabold', item.type === 'inflow' ? 'text-emerald-700' : 'text-rose-700']">
               {{ item.type === "inflow" ? "+" : "-" }}{{ formatRupiah(item.nominal) }}
             </p>
             <div class="mt-3 flex gap-2">
@@ -458,7 +458,7 @@ onMounted(loadDashboard);
               <button type="button" class="btn btn-secondary flex-1 py-2" @click="selectedCashFlow = item">
                 <Pencil class="h-4 w-4" /> Ubah
               </button>
-              <button type="button" class="btn btn-secondary py-2 text-rose-600" aria-label="Hapus" @click="onDelete(item)">
+              <button type="button" class="btn btn-secondary py-2 text-rose-700" aria-label="Hapus" @click="onDelete(item)">
                 <Trash2 class="h-4 w-4" />
               </button>
             </div>

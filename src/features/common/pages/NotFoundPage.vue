@@ -11,7 +11,7 @@ import { Compass, LayoutDashboard } from "lucide-vue-next";
       </span>
       <p class="mt-6 text-6xl font-extrabold tracking-tight text-indigo-600">404</p>
       <h1 class="mt-2 text-2xl font-bold text-slate-900">Halaman tidak ditemukan</h1>
-      <p class="mt-2 text-sm text-slate-500">
+      <p class="mt-2 text-sm text-slate-600">
         Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.
       </p>
       <RouterLink to="/" class="btn btn-primary mt-8">
